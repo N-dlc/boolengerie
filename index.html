@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boulangerie</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>BOULANGERIE</h1>
+</header>
+
+<main>
+
+    <div class="menu">
+        <button onclick="showCategory('pain')">pain</button>
+        <button onclick="showCategory('patisserie')">pâtisserie</button>
+        <button onclick="showCategory('boisson')">boisson</button>
+    </div>
+
+    <div id="products" class="products"></div>
+
+    <div id="reservation" class="reservation hidden">
+        <h2>réserver</h2>
+
+        <input type="date" id="date">
+
+        <select id="time">
+            <option>9h - 12h</option>
+            <option>12h - 15h</option>
+            <option>15h - 18h</option>
+        </select>
+
+        <button onclick="sendReservation()">valider</button>
+    </div>
+
+    <p id="confirmation" class="hidden">réservation envoyée ✅</p>
+
+</main>
+
+<footer>
+    <p>contact : contact.boulangerie@gmail.com</p>
+    <p>téléphone : 06 12 34 56 78</p>
+</footer>
+
+<script>
+const data = {
+    pain: [
+        {name: "pain au chocolat", img: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec"},
+        {name: "baguette", img: "https://images.unsplash.com/photo-1608198093001-0c79cba7d9b2"},
+        {name: "pain complet", img: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73"}
+    ],
+    patisserie: [
+        {name: "tarte aux fraises", img: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3"},
+        {name: "millefeuille", img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729"},
+        {name: "tarte au chocolat", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c"}
+    ],
+    boisson: [
+        {name: "soda", img: "https://images.unsplash.com/photo-1581636625402-29b2a704ef13"},
+        {name: "café", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93"},
+        {name: "thé", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348"}
+    ]
+};
+
+function showCategory(category) {
+    const container = document.getElementById("products");
+    container.innerHTML = "";
+
+    data[category].forEach(item => {
+        container.innerHTML += `
+            <div class="card">
+                <img src="${item.img}" alt="${item.name}">
+                <p>${item.name}</p>
+                <button onclick="reserve()">réserver</button>
+            </div>
+        `;
+    });
+
+    document.getElementById("reservation").classList.add("hidden");
+    document.getElementById("confirmation").classList.add("hidden");
+}
+
+function reserve() {
+    document.getElementById("reservation").classList.remove("hidden");
+    document.getElementById("confirmation").classList.add("hidden");
+}
+
+function sendReservation() {
+    document.getElementById("reservation").classList.add("hidden");
+    document.getElementById("confirmation").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
