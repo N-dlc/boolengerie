@@ -1,8 +1,8 @@
 body {
     margin: 0;
     font-family: "Arial Rounded MT Bold", Arial, sans-serif;
-    background-color: #f5e6d3;
-    color: #8b5e3c;
+    background-color: #f5e6d3; /* beige */
+    color: #8b5e3c; /* marron */
 
     display: flex;
     flex-direction: column;
@@ -14,6 +14,12 @@ header {
     text-align: center;
 }
 
+header h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px;
+}
+
 /* MILIEU */
 main {
     flex: 1;
@@ -23,24 +29,28 @@ main {
     align-items: center;
 }
 
-/* BAS */
-footer {
-    text-align: center;
-    padding: 20px;
+/* MENU */
+#menu {
+    margin: 20px;
 }
 
-/* boutons */
+/* BOUTONS */
 button {
-    background-color: #8b5e3c;
-    color: #f5e6d3;
+    background-color: #8b5e3c; /* marron clair */
+    color: #f5e6d3; /* beige */
     border: none;
     padding: 12px 20px;
     margin: 10px;
     border-radius: 20px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-/* produits */
+button:hover {
+    opacity: 0.8;
+}
+
+/* PRODUITS */
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -48,7 +58,7 @@ button {
 }
 
 .card {
-    background: white;
+    background-color: white;
     border-radius: 20px;
     padding: 15px;
     margin: 15px;
@@ -60,6 +70,23 @@ button {
     border-radius: 15px;
 }
 
+/* RETOUR */
+#backBtn {
+    margin-top: 20px;
+}
+
+/* RESERVATION */
+#reservation {
+    margin-top: 20px;
+}
+
+/* CACHE */
 .hidden {
     display: none;
+}
+
+/* BAS */
+footer {
+    text-align: center;
+    padding: 20px;
 }
