@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Boulangerie</title>
+    <title>BOULANGERIE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,15 +13,21 @@
 
 <main>
 
-    <div class="menu">
+    <!-- MENU -->
+    <div id="menu">
         <button onclick="showCategory('pain')">pain</button>
         <button onclick="showCategory('patisserie')">pâtisserie</button>
         <button onclick="showCategory('boisson')">boisson</button>
     </div>
 
+    <!-- PRODUITS -->
     <div id="products" class="products"></div>
 
-    <div id="reservation" class="reservation hidden">
+    <!-- BOUTON RETOUR -->
+    <button id="backBtn" class="hidden" onclick="goBack()">retour</button>
+
+    <!-- RÉSERVATION -->
+    <div id="reservation" class="hidden">
         <h2>réserver</h2>
 
         <input type="date" id="date">
@@ -47,25 +53,28 @@
 <script>
 const data = {
     pain: [
-        {name: "pain au chocolat", img: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec"},
-        {name: "baguette", img: "https://images.unsplash.com/photo-1608198093001-0c79cba7d9b2"},
-        {name: "pain complet", img: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73"}
+        {name: "pain au chocolat", img: "images/pain-au-chocolat.jpg"},
+        {name: "baguette", img: "images/baguette.jpg"},
+        {name: "pain complet", img: "images/pain-complet.jpg"}
     ],
     patisserie: [
-        {name: "tarte aux fraises", img: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3"},
-        {name: "millefeuille", img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729"},
-        {name: "tarte au chocolat", img: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c"}
+        {name: "tarte aux fraises", img: "images/tarte-fraise.jpg"},
+        {name: "millefeuille", img: "images/millefeuille.jpg"},
+        {name: "tarte au chocolat", img: "images/tarte-chocolat.jpg"}
     ],
     boisson: [
-        {name: "soda", img: "https://images.unsplash.com/photo-1581636625402-29b2a704ef13"},
-        {name: "café", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93"},
-        {name: "thé", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348"}
+        {name: "soda", img: "images/soda.jpg"},
+        {name: "café", img: "images/cafe.jpg"},
+        {name: "thé", img: "images/the.jpg"}
     ]
 };
 
 function showCategory(category) {
     const container = document.getElementById("products");
     container.innerHTML = "";
+
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("backBtn").classList.remove("hidden");
 
     data[category].forEach(item => {
         container.innerHTML += `
@@ -77,6 +86,14 @@ function showCategory(category) {
         `;
     });
 
+    document.getElementById("reservation").classList.add("hidden");
+    document.getElementById("confirmation").classList.add("hidden");
+}
+
+function goBack() {
+    document.getElementById("menu").style.display = "block";
+    document.getElementById("products").innerHTML = "";
+    document.getElementById("backBtn").classList.add("hidden");
     document.getElementById("reservation").classList.add("hidden");
     document.getElementById("confirmation").classList.add("hidden");
 }
